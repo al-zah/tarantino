@@ -1,9 +1,11 @@
-![Logo](https://github.com/flatiron/director/raw/master/img/director.png)
+# tarantino
 
-# Synopsis
-
-Director is a router. Routing is the process of determining what code to run
+tarantino is a router. Routing is the process of determining what code to run
 when a URL is requested.
+
+tarantino is a fork of [Director](https://github.com/flatiron/director). tarantino was created because Director doesn't seem to be maintained anymore and the maintainers didn't comment on any questions about the status of the project.
+
+**This is a work in progress. At the moment it isn't useful yet!**
 
 # Motivation
 
@@ -13,7 +15,7 @@ and Node.js applications. Dependency free (doesn't require jQuery or Express,
 etc).
 
 # Status
-[![Build Status](https://secure.travis-ci.org/flatiron/director.png?branch=master)](http://travis-ci.org/flatiron/director)
+[![Build Status](https://secure.travis-ci.org/CodeYellowBV/tarantino.png?branch=master)](http://travis-ci.org/CodeYellowBV/tarantino)
 
 # Features
 
@@ -46,7 +48,7 @@ Client-side routing (aka hash-routing) allows you to specify some information
 about the state of the application using the URL. So that when the user visits
 a specific URL, the application can be transformed accordingly.
 
-![Hash route](https://github.com/flatiron/director/raw/master/img/hashRoute.png)
+![Hash route](https://github.com/CodeYellowBV/tarantino/raw/master/img/hashRoute.png)
 
 Here is a simple example:
 
@@ -58,7 +60,7 @@ Here is a simple example:
     <title>A Gentle Introduction</title>
 
     <script
-      src="https://rawgit.com/flatiron/director/master/build/director.min.js">
+      src="https://rawgit.com/CodeYellowBV/tarantino/master/build/director.min.js">
     </script>
 
     <script>
@@ -106,7 +108,7 @@ Director works great with your favorite DOM library, such as jQuery.
     </script>
 
     <script
-      src="https://rawgit.com/flatiron/director/master/build/director.min.js">
+      src="https://rawgit.com/CodeYellowBV/tarantino/master/build/director.min.js">
     </script>
 
     <script>
@@ -956,7 +958,7 @@ Applications.
 ##### Author: [Charlie Robbins](https://github.com/indexzero)
 ##### Contributors: [Paolo Fragomeni](https://github.com/hij1nx)
 
-[0]: http://github.com/flatiron/director
-[1]: https://github.com/flatiron/director/blob/master/build/director.min.js
+[0]: http://github.com/CodeYellowBV/tarantino
+[1]: https://github.com/CodeYellowBV/tarantino/blob/master/build/director.min.js
 [2]: http://github.com/flatiron/flatiron
 [3]: http://github.com/flatiron/union
