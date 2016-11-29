@@ -6,7 +6,7 @@ var surgeon = new Codesurgeon();
 var path    = require('path');
 
 var root    = path.join(__dirname, '..');
-var lib     = path.join(root, 'lib', 'director');
+var lib     = path.join(root, 'lib', 'tarantino');
 
 //
 // Distill and package the browser version.
@@ -72,10 +72,10 @@ surgeon
   // Write the debuggable version of the file. This file will
   // get renamed to include the version from the package.json.
   //
-  .write(root + '/build/director.js')
+  .write(root + '/build/tarantino.js')
   //
   // Make a minified version for production use.
   //
   .uglify()
-  .write(root + '/build/director.min.js')
+  .write(root + '/build/tarantino.min.js')
 ;

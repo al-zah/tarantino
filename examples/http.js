@@ -1,7 +1,7 @@
 var http = require('http'),
-    director = require('../lib/director');
+    tarantino = require('../lib/tarantino');
 
-var router = new director.http.Router();
+var router = new tarantino.http.Router();
 
 var server = http.createServer(function (req, res) {
   req.chunks = [];
@@ -30,4 +30,4 @@ router.post(/foo/, function () {
 });
 
 server.listen(8080);
-console.log('vanilla http server with director running on 8080');
+console.log('vanilla http server with tarantino running on 8080');

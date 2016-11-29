@@ -8,7 +8,7 @@
 
 var assert = require('assert'),
     vows = require('vows'),
-    director = require('../../../lib/director');
+    director = require('../../../lib/tarantino');
 
 function assertRoute (fn, path, route) {
   if (path.length === 1) {

@@ -1,7 +1,7 @@
 var http     = require('http'),
   fs       = require('fs'),
   path     = require('path'),
-  director = require('../../../lib/director'),
+  director = require('../../../lib/tarantino'),
   index;
 
 fs.readFile(path.join(__dirname, '..', 'html5-routes-harness.html'), function (err, data) {

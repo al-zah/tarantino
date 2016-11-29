@@ -1,39 +1,38 @@
 {
-  "name": "director",
+  "name": "tarantino",
   "description": "A client Side/Server Side Router",
   "author": "Charlie Robbins <charlie.robbins@gmail.com>",
   "version": "1.2.8",
+  "license": "MIT",
   "maintainers": [
-    "hij1nx <paolo@nodejitsu.com>",
-    "beaugunderson <beau@beaugunderson.com>"
+    "Kees Kluskens <kees@codeyellow.nl>"
   ],
   "repository": {
     "type": "git",
-    "url": "http://github.com/flatiron/director.git"
+    "url": "http://github.com/CodeYellowBV/tarantino.git"
   },
   "keywords": [
     "URL",
     "router",
     "http",
     "cli",
-    "flatiron",
     "client side",
     "ender"
   ],
   "devDependencies": {
-    "api-easy": "0.4.x",
-    "codesurgeon": "https://github.com/hij1nx/codesurgeon/tarball/master",
-    "colors": "1.0.x",
-    "qunitjs": "1.9.x",
-    "request": "2.49.x",
-    "uglify-js": "2.4.x",
-    "vows": "0.8.0"
+    "api-easy": "^0.4.0",
+    "codesurgeon": "0.3.4-1",
+    "colors": "^1.1.2",
+    "qunitjs": "^2.0.1",
+    "request": "^2.79.0",
+    "uglify-js": "^2.7.4",
+    "vows": "^0.8.1"
   },
   "ender": "./build/ender.js",
-  "browserify": "./build/director",
-  "main": "./lib/director",
+  "browserify": "./build/tarantino",
+  "main": "./lib/tarantino",
   "engines": {
-    "node": ">= 0.8.0"
+    "node": ">= 0.12.0"
   },
   "scripts": {
     "test": "vows test/server/*/*-test.js --spec"

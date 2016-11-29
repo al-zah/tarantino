@@ -1,7 +1,7 @@
 
 var assert = require('assert'),
     vows = require('vows'),
-    director = require('../../../lib/director');
+    director = require('../../../lib/tarantino');
 
 var callback = function() {
   return true;

@@ -8,7 +8,7 @@
 
 var assert = require('assert'),
     apiEasy = require('api-easy'),
-    director = require('../../../lib/director'),
+    director = require('../../../lib/tarantino'),
     helpers = require('../helpers'),
     macros = helpers.macros,
     handlers = helpers.handlers;

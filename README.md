@@ -1,9 +1,9 @@
-# tarantino
+# Tarantino
 
-tarantino is a router. Routing is the process of determining what code to run
+Tarantino is a router. Routing is the process of determining what code to run
 when a URL is requested.
 
-tarantino is a fork of [Director](https://github.com/flatiron/director). tarantino was created because Director doesn't seem to be maintained anymore and the maintainers didn't comment on any questions about the status of the project.
+Tarantino is a fork of [Director](https://github.com/flatiron/director). It was created because Director doesn't seem to be maintained anymore and the maintainers didn't comment on any questions about the status of the project.
 
 **This is a work in progress. At the moment it isn't useful yet!**
 
@@ -60,7 +60,7 @@ Here is a simple example:
     <title>A Gentle Introduction</title>
 
     <script
-      src="https://rawgit.com/CodeYellowBV/tarantino/master/build/director.min.js">
+      src="https://rawgit.com/CodeYellowBV/tarantino/master/build/tarantino.min.js">
     </script>
 
     <script>
@@ -94,7 +94,7 @@ Here is a simple example:
 </html>
 ```
 
-Director works great with your favorite DOM library, such as jQuery.
+Tarantino works great with your favorite DOM library, such as jQuery.
 
 ```html
 <!DOCTYPE html>
@@ -108,7 +108,7 @@ Director works great with your favorite DOM library, such as jQuery.
     </script>
 
     <script
-      src="https://rawgit.com/CodeYellowBV/tarantino/master/build/director.min.js">
+      src="https://rawgit.com/CodeYellowBV/tarantino/master/build/tarantino.min.js">
     </script>
 
     <script>
@@ -169,19 +169,19 @@ Director works great with your favorite DOM library, such as jQuery.
 </html>
 ```
 
-You can find a browser-specific build of `director` [here][1] which has all of
+You can find a browser-specific build of `tarantino` [here][1] which has all of
 the server code stripped away.
 
 ## Server-Side HTTP Routing
 
-Director handles routing for HTTP requests similar to `journey` or `express`:
+Tarantino handles routing for HTTP requests similar to `journey` or `express`:
 
 ```js
   //
-  // require the native http module, as well as director.
+  // require the native http module, as well as tarantino.
   //
   var http = require('http'),
-      director = require('director');
+      tarantino = require('tarantino');
 
   //
   // create some logic to be routed to.
@@ -194,7 +194,7 @@ Director handles routing for HTTP requests similar to `journey` or `express`:
   //
   // define a routing table.
   //
-  var router = new director.http.Router({
+  var router = new tarantino.http.Router({
     '/hello': {
       get: helloWorld
     }
@@ -236,13 +236,13 @@ Director handles routing for HTTP requests similar to `journey` or `express`:
 
 ## Server-Side CLI Routing
 
-Director supports Command Line Interface routing. Routes for cli options are
+Tarantino supports Command Line Interface routing. Routes for cli options are
 based on command line input (i.e. `process.argv`) instead of a URL.
 
 ``` js
-  var director = require('director');
+  var tarantino = require('tarantino');
 
-  var router = new director.cli.Router();
+  var router = new tarantino.cli.Router();
 
   router.on('create', function () {
     console.log('create something');
@@ -325,7 +325,7 @@ functions that you have defined in your code.
 When developing large client-side or server-side applications it is not always
 possible to define routes in one location. Usually individual decoupled
 components register their own routes with the application router. We refer to
-this as _Adhoc Routing._ Lets take a look at the API `director` exposes for
+this as _Adhoc Routing._ Lets take a look at the API `tarantino` exposes for
 adhoc routing:
 
 **Client-side Routing**
@@ -343,7 +343,7 @@ adhoc routing:
 **HTTP Routing**
 
 ``` js
-  var router = new director.http.Router();
+  var router = new tarantino.http.Router();
 
   router.get(/\/some\/resource/, function () {
     //
@@ -356,11 +356,11 @@ adhoc routing:
 
 In large web appliations, both [Client-side](#client-side) and
 [Server-side](#http-routing), routes are often scoped within a few individual
-resources. Director exposes a simple way to do this for [Adhoc
+resources. Tarantino exposes a simple way to do this for [Adhoc
 Routing](#adhoc-routing) scenarios:
 
 ``` js
-  var router = new director.http.Router();
+  var router = new tarantino.http.Router();
 
   //
   // Create routes inside the `/users` scope.
@@ -393,7 +393,7 @@ Routing](#adhoc-routing) scenarios:
 
 ## Routing Events
 
-In `director`, a "routing event" is a named property in the
+In `tarantino`, a "routing event" is a named property in the
 [Routing Table](#routing-table) which can be assigned to a function or an Array
 of functions to be called when a route is matched in a call to
 `router.dispatch()`.
@@ -411,12 +411,12 @@ of functions to be called when a route is matched in a call to
 
 ## Configuration
 
-Given the flexible nature of `director` there are several options available for
+Given the flexible nature of `tarantino` there are several options available for
 both the [Client-side](#client-side) and [Server-side](#http-routing). These
 options can be set using the `.configure()` method:
 
 ``` js
-  var router = new director.Router(routes).configure(options);
+  var router = new tarantino.Router(routes).configure(options);
 ```
 
 The `options` are:
@@ -471,7 +471,7 @@ The `options` are:
 ```
 
 Routes can sometimes become very complex, `simple/:tokens` don't always
-suffice. Director supports regular expressions inside the route names. The
+suffice. Tarantino supports regular expressions inside the route names. The
 values captured from the regular expressions are passed to your listener
 function.
 
@@ -513,10 +513,10 @@ simple example where a `userId` is used repeatedly.
 
 ``` js
   //
-  // Create a router. This could also be director.cli.Router() or
-  // director.http.Router().
+  // Create a router. This could also be tarantino.cli.Router() or
+  // tarantino.http.Router().
   //
-  var router = new director.Router();
+  var router = new tarantino.Router();
 
   //
   // A route could be defined using the `userId` explicitly.
@@ -638,7 +638,7 @@ listeners associated with an exact match will be fired.
 
 ## Async Routing
 
-Before diving into how Director exposes async routing, you should understand
+Before diving into how Tarantino exposes async routing, you should understand
 [Route Recursion](#route-recursion). At it's core route recursion is about
 evaluating a series of functions gathered when traversing the [Routing
 Table](#routing-table).
@@ -660,7 +660,7 @@ callback.
 ### Synchronous route functions
 
 ``` js
-  var router = new director.Router();
+  var router = new tarantino.Router();
 
   router.on('/:foo/:bar/:bazz', function (foo, bar, bazz) {
     //
@@ -672,7 +672,7 @@ callback.
 ### Asynchronous route functions
 
 ``` js
-  var router = new director.http.Router().configure({ async: true });
+  var router = new tarantino.http.Router().configure({ async: true });
 
   router.on('/:foo/:bar/:bazz', function (foo, bar, bazz, next) {
     //
@@ -709,7 +709,7 @@ object can provide the means for better encapsulation and design.
 
 ## History API
 
-**Available on the Client-side only.** Director supports using HTML5 History
+**Available on the Client-side only.** Tarantino supports using HTML5 History
 API instead of hash fragments for navigation. To use the API, pass
 `{html5history: true}` to `configure()`. Use of the API is enabled only if the
 client supports `pushState()`.
@@ -735,9 +735,9 @@ route handlers, will contain the request in `this.req` and the response in
 `router.attach` method:
 
 ```js
-  var director = require('director');
+  var tarantino = require('tarantino');
 
-  var router = new director.http.Router().configure(options);
+  var router = new tarantino.http.Router().configure(options);
 
   //
   // Attach properties to `this`
@@ -771,7 +771,7 @@ When you are performing HTTP routing there are two common scenarios:
 * Stream the request body by manually calling `.pipe` or listening to the
   `data` and `end` events.
 
-By default `director.http.Router()` will attempt to parse either the `.chunks`
+By default `tarantino.http.Router()` will attempt to parse either the `.chunks`
 or `.body` properties set on the request parameter passed to
 `router.dispatch(request, response, callback)`. The router instance will also
 wait for the `end` event before firing any routes.
@@ -779,9 +779,9 @@ wait for the `end` event before firing any routes.
 **Default Behavior**
 
 ``` js
-  var director = require('director');
+  var tarantino = require('tarantino');
 
-  var router = new director.http.Router();
+  var router = new tarantino.http.Router();
 
   router.get('/', function () {
     //
@@ -794,17 +794,17 @@ wait for the `end` event before firing any routes.
   });
 ```
 
-In [flatiron][2], `director` is used in conjunction with [union][3] which uses
+In [flatiron][2], `tarantino` is used in conjunction with [union][3] which uses
 a `BufferedStream` proxy to the raw `http.Request` instance. [union][3] will
-set the `req.chunks` property for you and director will automatically parse the
-body. If you wish to perform this buffering yourself directly with `director`
+set the `req.chunks` property for you and tarantino will automatically parse the
+body. If you wish to perform this buffering yourself directly with `tarantino`
 you can use a simple request handler in your http server:
 
 ``` js
   var http = require('http'),
-      director = require('director');
+      tarantino = require('tarantino');
 
-  var router = new director.http.Router();
+  var router = new tarantino.http.Router();
 
   var server = http.createServer(function (req, res) {
     req.chunks = [];
@@ -834,9 +834,9 @@ If you wish to get access to the request stream before the `end` event is
 fired, you can pass the `{ stream: true }` options to the route.
 
 ``` js
-  var director = require('director');
+  var tarantino = require('tarantino');
 
-  var router = new director.http.Router();
+  var router = new tarantino.http.Router();
 
   router.get('/', { stream: true }, function () {
     //
@@ -951,7 +951,7 @@ Set a segment of the current route.
 
 Is using a Client-side router a problem for SEO? Yes. If advertising is a
 requirement, you are probably building a "Web Page" and not a "Web
-Application". Director on the client is meant for script-heavy Web
+Application". Tarantino on the client is meant for script-heavy Web
 Applications.
 
 ##### LICENSE: MIT
@@ -959,6 +959,6 @@ Applications.
 ##### Contributors: [Paolo Fragomeni](https://github.com/hij1nx)
 
 [0]: http://github.com/CodeYellowBV/tarantino
-[1]: https://github.com/CodeYellowBV/tarantino/blob/master/build/director.min.js
+[1]: https://github.com/CodeYellowBV/tarantino/blob/master/build/tarantino.min.js
 [2]: http://github.com/flatiron/flatiron
 [3]: http://github.com/flatiron/union

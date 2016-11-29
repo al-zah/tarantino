@@ -8,7 +8,7 @@
 
 var assert = require('assert'),
     vows = require('vows'),
-    director = require('../../../lib/director');
+    director = require('../../../lib/tarantino');
 
 vows.describe('director/cli/path').addBatch({
   "An instance of director.cli.Router with routes": {
