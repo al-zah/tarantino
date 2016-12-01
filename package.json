@@ -2,7 +2,7 @@
   "name": "tarantino",
   "description": "A client Side/Server Side Router - A Fork of Director",
   "author": "Charlie Robbins <charlie.robbins@gmail.com>",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "license": "MIT",
   "maintainers": [
     "Kees Kluskens <kees@codeyellow.nl>"
