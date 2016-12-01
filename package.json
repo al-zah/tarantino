@@ -38,6 +38,7 @@
   "scripts": {
     "test": "vows test/server/*/*-test.js --spec",
     "build": "rm -f build/** && rollup -c && rollup -c rollup.minify.config.js",
-    "preversion": "npm run -s build"
+    "preversion": "npm run -s build",
+    "version": "git add -A build"
   }
 }
