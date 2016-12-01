@@ -17,8 +17,6 @@ var CONTENT_TYPES = {
   '.css' : 'text/css'
 };
 
-var dirname = path.dirname(module.uri);
-
 // Dummy file server
 function fileServer(folder, file) {
   var root = path.resolve(__dirname, '..');
