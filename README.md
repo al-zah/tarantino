@@ -3,9 +3,13 @@
 Tarantino is a router. Routing is the process of determining what code to run
 when a URL is requested.
 
-Tarantino is a fork of [Director](https://github.com/flatiron/director). It was created because Director doesn't seem to be maintained anymore and the maintainers didn't comment on any questions about the status of the project.
+Tarantino is a fork of [Director](https://github.com/flatiron/director). It was created because Director doesn't seem to be maintained anymore and the maintainers didn't comment on any questions about the status of the project. All credits belong to Director!!
 
 **This is a work in progress. At the moment it isn't useful yet!**
+
+```
+npm install tarantino --save
+```
 
 # Motivation
 
@@ -27,14 +31,6 @@ etc).
 
 * [API Documentation](#api-documentation)
 * [Frequently Asked Questions](#faq)
-
-## Building client-side script
-
-Run the provided CLI script.
-
-```bash
-./bin/build
-```
 
 ## Client-side Routing
 

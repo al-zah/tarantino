@@ -36,6 +36,7 @@
   },
   "scripts": {
     "test": "vows test/server/*/*-test.js --spec",
-    "build": "rm -f build/** && rollup -c"
+    "build": "rm -f build/** && rollup -c",
+    "preversion": "npm run -s build"
   }
 }
