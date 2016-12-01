@@ -21,20 +21,21 @@
   ],
   "devDependencies": {
     "api-easy": "^0.4.0",
-    "codesurgeon": "0.3.4-1",
     "colors": "^1.1.2",
     "qunitjs": "^2.0.1",
     "request": "^2.79.0",
+    "rollup": "^0.36.4",
+    "rollup-plugin-commonjs": "^5.0.5",
     "uglify-js": "^2.7.4",
     "vows": "^0.8.1"
   },
-  "ender": "./build/ender.js",
-  "browserify": "./build/tarantino",
-  "main": "./lib/tarantino",
+  "browser": "./build/tarantino.js",
+  "main": "./lib/tarantino.js",
   "engines": {
     "node": ">= 0.12.0"
   },
   "scripts": {
-    "test": "vows test/server/*/*-test.js --spec"
+    "test": "vows test/server/*/*-test.js --spec",
+    "build": "rm -f build/** && rollup -c"
   }
 }
