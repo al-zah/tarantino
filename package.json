@@ -16,6 +16,7 @@
     "router",
     "http",
     "cli",
+    "director",
     "client side"
   ],
   "devDependencies": {
