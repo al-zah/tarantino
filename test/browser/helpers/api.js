@@ -1,5 +1,5 @@
-module("Director.js", {
-  setup: function() {
+QUnit.module("Director.js", {
+  beforeEach: function() {
     window.location.hash = "";
     shared = {};
     // Init needed keys earlier because of in HTML5 mode the route handler
@@ -10,7 +10,7 @@ module("Director.js", {
       shared.fired_count = 0;
     }
   },
-  teardown: function() {
+  afterEach: function() {
     window.location.hash = "";
     shared = {};
   }
@@ -21,28 +21,30 @@ var shared;
 function createTest(name, config, use, test, initialRoute) {
   // We rename to `RouterAlias` for the browserify tests, since we want to be
   // sure that no code is depending on `window.Router` being available.
-  var Router = window.Router || window.RouterAlias;
+  var Router = window.tarantino.Router;
 
   if (typeof use === 'function') {
     test = use;
     use = undefined;
   }
 
+  if (use === undefined) {
+    use = {};
+  }
   if (HTML5TEST) {
-    if (use === undefined) {
-      use = {};
-    }
 
     if (use.run_handler_in_init === undefined) {
       use.run_handler_in_init = false;
     }
-    use.html5history        = true;
+  } else {
+    use.html5history = false;
   }
 
   // Because of the use of setTimeout when defining onpopstate
   var innerTimeout = HTML5TEST === true ? 500 : 0;
 
-  asyncTest(name, function() {
+  QUnit.test(name, function(assert) {
+    var done = assert.async();
     setTimeout(function() {
       var router = new Router(config),
           context;
@@ -68,9 +70,9 @@ function createTest(name, config, use, test, initialRoute) {
           },
           finish: function() {
             router.destroy();
-            start();
+            done();
           }
-        })
+        }, assert)
       }, innerTimeout);
     }, 14);
   });

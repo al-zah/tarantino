@@ -22,6 +22,8 @@
   "devDependencies": {
     "api-easy": "^0.4.0",
     "colors": "^1.1.2",
+    "opn": "^4.0.2",
+    "opn-cli": "^3.1.0",
     "qunitjs": "^2.0.1",
     "request": "^2.79.0",
     "rollup": "^0.36.4",
@@ -42,6 +44,8 @@
   "scripts": {
     "test": "vows test/server/*/*-test.js --spec",
     "build": "rm -f build/** && rollup -c && rollup -c rollup.minify.config.js",
+    "test-html5": "node ./test/browser/backend/backend.js",
+    "test-hash": "opn ./test/browser/routes-harness.html",
     "preversion": "npm run -s build",
     "version": "git add -A build"
   }

@@ -1,7 +1,8 @@
 var http     = require('http'),
   fs       = require('fs'),
   path     = require('path'),
-  director = require('../../../lib/tarantino'),
+  tarantino = require('../../../lib/tarantino'),
+  opn = require('opn'),
   index;
 
 fs.readFile(path.join(__dirname, '..', 'html5-routes-harness.html'), function (err, data) {
@@ -52,7 +53,7 @@ function fileServer(folder, file) {
   });
 }
 
-var router = new director.http.Router({
+var router = new tarantino.http.Router({
   '/files': {
     '/:folder': {
       '/(.+)': {
@@ -74,4 +75,8 @@ var server = http.createServer(function (req, res) {
   });
 });
 
-server.listen(8080);
+server.listen(8080, function () {
+  var url = 'http://localhost:8080/';
+  console.log('Open your browser on ' + url);
+  opn(url);
+});

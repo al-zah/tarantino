@@ -1,4 +1,3 @@
-
 createTest('Nested route with the many children as a tokens, callbacks should yield historic params', {
   '/a': {
     '/:id': {
@@ -7,10 +6,10 @@ createTest('Nested route with the many children as a tokens, callbacks should yi
       }
     }
   }
-}, function() {
+}, function(assert) {
   shared.fired = [];
   this.navigate('/a/b/c', function() {
-    deepEqual(shared.fired, ['#/a/b/c', 'b', 'c']);
+    assert.deepEqual(shared.fired, ['#/a/b/c', 'b', 'c']);
     this.finish();
   });
 });
@@ -23,11 +22,11 @@ createTest('Nested route with the first child as a token, callback should yield 
       }
     }
   }
-}, function() {
+}, function(assert) {
   shared.fired = [];
   this.navigate('/foo/a', function() {
     this.navigate('/foo/b/c', function() {
-      deepEqual(shared.fired, ['#/foo/a', 'a']);
+      assert.deepEqual(shared.fired, ['#/foo/a', 'a']);
       this.finish();
     });
   });
@@ -41,11 +40,11 @@ createTest('Nested route with the first child as a regexp, callback should yield
       }
     }
   }
-}, function() {
+}, function(assert) {
   shared.fired = [];
   this.navigate('/foo/a', function() {
     this.navigate('/foo/b/c', function() {
-      deepEqual(shared.fired, ['#/foo/a', 'a']);
+      assert.deepEqual(shared.fired, ['#/foo/a', 'a']);
       this.finish();
     });
   });
@@ -59,10 +58,10 @@ createTest('Nested route with the several regular expressions, callback should y
       }
     }
   }
-}, function() {
+}, function(assert) {
   shared.fired = [];
   this.navigate('/a/b/c', function() {
-    deepEqual(shared.fired, ['b', 'c']);
+    assert.deepEqual(shared.fired, ['b', 'c']);
     this.finish();
   });
 });
@@ -77,10 +76,10 @@ createTest('Single nested route with on member containing function value', {
       }
     }
   }
-}, function() {
+}, function(assert) {
   shared.fired = [];
   this.navigate('/a/b', function() {
-      deepEqual(shared.fired, ['#/a/b']);
+      assert.deepEqual(shared.fired, ['#/a/b']);
       this.finish();
   });
 });
@@ -91,10 +90,10 @@ createTest('Single non-nested route with on member containing function value', {
       shared.fired.push(location.hash);
     }
   }
-}, function() {
+}, function(assert) {
   shared.fired = [];
   this.navigate('/a/b', function() {
-    deepEqual(shared.fired, ['#/a/b']);
+    assert.deepEqual(shared.fired, ['#/a/b']);
     this.finish();
   });
 });
@@ -106,10 +105,10 @@ createTest('Single nested route with on member containing array of function valu
         function() { shared.fired.push(location.hash); }]
     }
   }
-}, function() {
+}, function(assert) {
   shared.fired = [];
   this.navigate('/a/b', function() {
-      deepEqual(shared.fired, ['#/a/b', '#/a/b']);
+      assert.deepEqual(shared.fired, ['#/a/b', '#/a/b']);
       this.finish();
   });
 });
@@ -122,12 +121,12 @@ createTest('method should only fire once on the route.', {
       }
     }
   }
-}, function() {
+}, function(assert) {
   shared.fired = 0;
   this.navigate('/a/b', function() {
     this.navigate('/a/b', function() {
       this.navigate('/a/b', function() {
-        deepEqual(shared.fired, 1);
+        assert.deepEqual(shared.fired, 1);
         this.finish();
       });
     });
@@ -143,13 +142,13 @@ createTest('method should only fire once on the route, multiple nesting.', {
     on: function() { shared.fired++; },
     once: function() { shared.fired++; }
   }
-}, function() {
+}, function(assert) {
   shared.fired = 0;
   this.navigate('/a', function() {
     this.navigate('/b', function() {
       this.navigate('/a', function() {
         this.navigate('/b', function() {
-          deepEqual(shared.fired, 6);
+          assert.deepEqual(shared.fired, 6);
           this.finish();
         });
       });
@@ -164,12 +163,12 @@ createTest('overlapping routes with tokens.', {
   '/a/:b/c/:d' : function() {
     shared.fired.push(location.hash);
   }
-}, function() {
+}, function(assert) {
   shared.fired = [];
   this.navigate('/a/b/c', function() {
 
     this.navigate('/a/b/c/d', function() {
-      deepEqual(shared.fired, ['#/a/b/c', '#/a/b/c/d']);
+      assert.deepEqual(shared.fired, ['#/a/b/c', '#/a/b/c/d']);
       this.finish();
     });
   });
@@ -195,11 +194,11 @@ createTest('Nested routes with no recursion', {
       shared.fired.push('a');
     }
   }
-}, function() {
+}, function(assert) {
   shared.fired = [];
 
   this.navigate('/a/b/c', function() {
-    deepEqual(shared.fired, ['c']);
+    assert.deepEqual(shared.fired, ['c']);
     this.finish();
   });
 });
@@ -222,11 +221,11 @@ createTest('Nested routes with backward recursion', {
   }
 }, {
   recurse: 'backward'
-}, function() {
+}, function(assert) {
   shared.fired = [];
 
   this.navigate('/a/b/c', function() {
-    deepEqual(shared.fired, ['c', 'b', 'a']);
+    assert.deepEqual(shared.fired, ['c', 'b', 'a']);
     this.finish();
   });
 });
@@ -250,11 +249,11 @@ createTest('Breaking out of nested routes with backward recursion', {
   }
 }, {
   recurse: 'backward'
-}, function() {
+}, function(assert) {
   shared.fired = [];
 
   this.navigate('/a/b/c', function() {
-    deepEqual(shared.fired, ['c', 'b']);
+    assert.deepEqual(shared.fired, ['c', 'b']);
     this.finish();
   });
 });
@@ -277,11 +276,11 @@ createTest('Nested routes with forward recursion', {
   }
 }, {
   recurse: 'forward'
-}, function() {
+}, function(assert) {
   shared.fired = [];
 
   this.navigate('/a/b/c', function() {
-    deepEqual(shared.fired, ['a', 'b', 'c']);
+    assert.deepEqual(shared.fired, ['a', 'b', 'c']);
     this.finish();
   });
 });
@@ -307,12 +306,12 @@ createTest('Nested routes with forward recursion, single route with an after eve
   }
 }, {
   recurse: 'forward'
-}, function() {
+}, function(assert) {
   shared.fired = [];
 
   this.navigate('/a/b/c', function() {
     this.navigate('/a/b', function() {
-      deepEqual(shared.fired, ['a', 'b', 'c', 'c-after', 'a', 'b']);
+      assert.deepEqual(shared.fired, ['a', 'b', 'c', 'c-after', 'a', 'b']);
       this.finish();
     });
   });
@@ -337,11 +336,11 @@ createTest('Breaking out of nested routes with forward recursion', {
   }
 }, {
   recurse: 'forward'
-}, function() {
+}, function(assert) {
   shared.fired = [];
 
   this.navigate('/a/b/c', function() {
-    deepEqual(shared.fired, ['a', 'b']);
+    assert.deepEqual(shared.fired, ['a', 'b']);
     this.finish();
   });
 });
@@ -378,13 +377,13 @@ createTest('All global event should fire after every route', {
   after: function() {
     shared.fired.push('b');
   }
-}, function() {
+}, function(assert) {
   shared.fired = [];
 
   this.navigate('/a', function() {
     this.navigate('/b/c', function() {
       this.navigate('/d/e', function() {
-        deepEqual(shared.fired, ['a', 'b', 'a', 'b', 'a']);
+        assert.deepEqual(shared.fired, ['a', 'b', 'a', 'b', 'a']);
         this.finish();
       });
     });
@@ -407,12 +406,12 @@ createTest('Not found.', {
   notfound: function() {
     shared.fired.push('notfound');
   }
-}, function() {
+}, function(assert) {
   shared.fired = [];
 
   this.navigate('/c', function() {
     this.navigate('/d', function() {
-      deepEqual(shared.fired, ['notfound', 'notfound']);
+      assert.deepEqual(shared.fired, ['notfound', 'notfound']);
       this.finish();
     });
   });
@@ -433,12 +432,12 @@ createTest('On all.', {
   on: function() {
     shared.fired.push('c');
   }
-}, function() {
+}, function(assert) {
   shared.fired = [];
 
   this.navigate('/a', function() {
     this.navigate('/b', function() {
-      deepEqual(shared.fired, ['a', 'c', 'b', 'c']);
+      assert.deepEqual(shared.fired, ['a', 'c', 'b', 'c']);
       this.finish();
     });
   });
@@ -460,12 +459,12 @@ createTest('After all.', {
   after: function() {
     shared.fired.push('c');
   }
-}, function() {
+}, function(assert) {
   shared.fired = [];
 
   this.navigate('/a', function() {
     this.navigate('/b', function() {
-      deepEqual(shared.fired, ['a', 'c', 'b']);
+      assert.deepEqual(shared.fired, ['a', 'c', 'b']);
       this.finish();
     });
   });
@@ -491,12 +490,12 @@ createTest('resource object.', {
         shared.fired.push("f2");
     }
   }
-}, function() {
+}, function(assert) {
   shared.fired = [];
 
   this.navigate('/a/b/c', function() {
     this.navigate('/d', function() {
-      deepEqual(shared.fired, ['f1-c', 'f1-undefined', 'f2']);
+      assert.deepEqual(shared.fired, ['f1-c', 'f1-undefined', 'f2']);
       this.finish();
     });
   });
@@ -508,10 +507,10 @@ createTest('argument matching should be case agnostic', {
         shared.fired.push("fooBar-" + name);
       }
     }
-}, function() {
+}, function(assert) {
   shared.fired = [];
   this.navigate('/fooBar/tesTing', function() {
-    deepEqual(shared.fired, ['fooBar-tesTing']);
+    assert.deepEqual(shared.fired, ['fooBar-tesTing']);
     this.finish();
   });
 });
@@ -527,10 +526,10 @@ createTest('sanity test', {
       shared.fired.push('is there sanity?');
     }
   }
-}, function() {
+}, function(assert) {
   shared.fired = [];
   this.navigate('/is/there/sanity', function() {
-    deepEqual(shared.fired, ['yes there is sanity']);
+    assert.deepEqual(shared.fired, ['yes there is sanity']);
     this.finish();
   });
 });
@@ -546,10 +545,10 @@ createTest('`/` route should be navigable from the routing table', {
       shared.fired.push('/' + username);
     }
   }
-}, function() {
+}, function(assert) {
   shared.fired = [];
   this.navigate('/', function root() {
-    deepEqual(shared.fired, ['/']);
+    assert.deepEqual(shared.fired, ['/']);
     this.finish();
   });
 });
@@ -565,10 +564,10 @@ createTest('`/` route should not override a `/:token` route', {
       shared.fired.push('/' + username);
     }
   }
-}, function() {
+}, function(assert) {
   shared.fired = [];
   this.navigate('/a', function afunc() {
-    deepEqual(shared.fired, ['/a']);
+    assert.deepEqual(shared.fired, ['/a']);
     this.finish();
   });
 });
@@ -579,10 +578,10 @@ createTest('should accept the root as a token.', {
       shared.fired.push(location.hash);
     }
   }
-}, function() {
+}, function(assert) {
   shared.fired = [];
   this.navigate('/a', function root() {
-    deepEqual(shared.fired, ['#/a']);
+    assert.deepEqual(shared.fired, ['#/a']);
     this.finish();
   });
 });
@@ -593,10 +592,10 @@ createTest('routes should allow wildcards.', {
       shared.fired.push(location.hash);
     }
   }
-}, function() {
+}, function(assert) {
   shared.fired = [];
   this.navigate('/a/bcd', function root() {
-    deepEqual(shared.fired, ['#/a/bcd']);
+    assert.deepEqual(shared.fired, ['#/a/bcd']);
     this.finish();
   });
 });
@@ -607,10 +606,10 @@ createTest('functions should have |this| context of the router instance.', {
       shared.fired.push(!!this.routes);
     }
   }
-}, function() {
+}, function(assert) {
   shared.fired = [];
   this.navigate('/', function root() {
-    deepEqual(shared.fired, [true]);
+    assert.deepEqual(shared.fired, [true]);
     this.finish();
   });
 });
@@ -621,12 +620,12 @@ createTest('setRoute with a single parameter should change location correctly', 
       shared.fired.push(window.location.hash);
     }
   }
-}, function() {
+}, function(assert) {
   var self = this;
   shared.fired = [];
   this.router.setRoute('/bonk');
   setTimeout(function() {
-    deepEqual(shared.fired, ['#/bonk']);
+    assert.deepEqual(shared.fired, ['#/bonk']);
     self.finish();
   }, 14)
 });
@@ -637,10 +636,10 @@ createTest('route should accept _ and . within parameters', {
       shared.fired.push(location.hash);
     }
   }
-}, function() {
+}, function(assert) {
   shared.fired = [];
   this.navigate('/a_complex_route.co.uk', function root() {
-    deepEqual(shared.fired, ['#/a_complex_route.co.uk']);
+    assert.deepEqual(shared.fired, ['#/a_complex_route.co.uk']);
     this.finish();
   });
 });
@@ -662,10 +661,10 @@ createTest('initializing with a default route should only result in one route ha
         shared.test++;
       }
     }
-  }, function() {
+  }, function(assert) {
     this.navigate('/test', function root() {
-      equal(shared.init, 1);
-      equal(shared.test, 1);
+      assert.equal(shared.init, 1);
+      assert.equal(shared.test, 1);
       this.finish();
     });
   },
@@ -683,11 +682,11 @@ createTest('changing the hash twice should call each route once', {
             shared.fired.push('hash2');
         }
       }
-  }, function() {
+  }, function(assert) {
     shared.fired = [];
     this.navigate('/hash1', function(){});
     this.navigate('/hash2', function(){
-      deepEqual(shared.fired, ['hash1', 'hash2']);
+      assert.deepEqual(shared.fired, ['hash1', 'hash2']);
       this.finish();
     });
   }
@@ -695,10 +694,10 @@ createTest('changing the hash twice should call each route once', {
 
 // This test doesn't use the createTest since createTest runs init on the router before
 // running the test, which is what we want to test.
-test('fire the correct route when initializing the router', function(){
+QUnit.test('fire the correct route when initializing the router', function(assert){
   window.location.hash = 'initial';
   var fired = [];
-  var router = new (window.Router || window.RouterAlias)({
+  var router = new window.tarantino.Router({
     '/initial': function(){
       fired.push('/initial');
     },
@@ -706,12 +705,13 @@ test('fire the correct route when initializing the router', function(){
       fired.push('initial');
     }
   });
+  router.configure({ html5history: false });
   router.init();
-  deepEqual(fired, ['/initial', 'initial']);
+  assert.deepEqual(fired, ['/initial', 'initial']);
   router.destroy();
 });
 
-test('do not combine hash if convert_hash_in_init is false', function(){
+QUnit.test('do not combine hash if convert_hash_in_init is false', function(assert){
   window.location.hash = 'initial';
   var fired = [];
   var initialPath = window.location.pathname;
@@ -727,13 +727,13 @@ test('do not combine hash if convert_hash_in_init is false', function(){
     fired.push('*');
   };
 
-  var router = new (window.Router || window.RouterAlias)(routes);
+  var router = new window.tarantino.Router(routes);
 
   router.configure({
     html5history: true,
     convert_hash_in_init: false
   });
   router.init();
-  deepEqual(fired, ['*']);
+  assert.deepEqual(fired, ['*']);
   router.destroy();
 });
