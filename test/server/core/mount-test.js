@@ -8,7 +8,7 @@
 
 var assert = require('assert'),
     vows = require('vows'),
-    director = require('../../../lib/tarantino');
+    tarantino = require('../../../lib/tarantino');
 
 function assertRoute (fn, path, route) {
   if (path.length === 1) {
@@ -20,10 +20,10 @@ function assertRoute (fn, path, route) {
   assertRoute(fn, path, route);
 }
 
-vows.describe('director/core/mount').addBatch({
-  "An instance of director.Router": {
+vows.describe('tarantino/core/mount').addBatch({
+  "An instance of tarantino.Router": {
     "with no preconfigured params": {
-      topic: new director.Router(),
+      topic: new tarantino.Router(),
       "the mount() method": {
         "should sanitize the routes correctly": function (router) {
           function foobar () { }
@@ -90,7 +90,7 @@ vows.describe('director/core/mount').addBatch({
     },
     "with preconfigured params": {
       topic: function () {
-        var router = new director.Router();
+        var router = new tarantino.Router();
         router.param('city', '([\\w\\-]+)');
         router.param(':country', /([A-Z][A-Za-z]+)/);
         router.param(':zip', /([\d]{5})/);

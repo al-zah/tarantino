@@ -1,14 +1,14 @@
 
 var assert = require('assert'),
     vows = require('vows'),
-    director = require('../../../lib/tarantino');
+    tarantino = require('../../../lib/tarantino');
 
 var callback = function() {
   return true;
 };
 
 var testRoute = function(route, callback) {
-  var router = new director.Router();
+  var router = new tarantino.Router();
   router.on(route, callback);
 
   return function(value) {
@@ -16,7 +16,7 @@ var testRoute = function(route, callback) {
   };
 };
 
-vows.describe('director/core/regifyString').addBatch({
+vows.describe('tarantino/core/regifyString').addBatch({
 
   'When using "/home(.*)"': {
     topic: function() {

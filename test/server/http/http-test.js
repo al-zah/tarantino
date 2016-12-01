@@ -10,7 +10,7 @@ var assert = require('assert'),
     http = require('http'),
     vows = require('vows'),
     request = require('request'),
-    director = require('../../../lib/tarantino'),
+    tarantino = require('../../../lib/tarantino'),
     helpers = require('../helpers'),
     handlers = helpers.handlers,
     macros = helpers.macros;
@@ -23,10 +23,10 @@ function assertBark(uri) {
   );
 }
 
-vows.describe('director/http').addBatch({
-  "An instance of director.http.Router": {
+vows.describe('tarantino/http').addBatch({
+  "An instance of tarantino.http.Router": {
     "instantiated with a Routing table": {
-      topic: new director.http.Router({
+      topic: new tarantino.http.Router({
         '/hello': {
           get: handlers.respondWithId
         }

@@ -8,19 +8,19 @@
 
 var assert = require('assert'),
     apiEasy = require('api-easy'),
-    director = require('../../../lib/tarantino'),
+    tarantino = require('../../../lib/tarantino'),
     helpers = require('../helpers'),
     macros = helpers.macros,
     handlers = helpers.handlers;
 
 var PORT = 9067;
 
-apiEasy.describe('director/http/accept')
+apiEasy.describe('tarantino/http/accept')
   .addBatch({
-    "An instance of `director.http.Router`": {
+    "An instance of `tarantino.http.Router`": {
       "with routes set up": {
         topic: function () {
-          var router = new director.http.Router();
+          var router = new tarantino.http.Router();
           router.get('/json', { accept: 'application/json' }, handlers.respondWithOk());
           router.get('/txt', { accept: 'text/plain' }, handlers.respondWithOk());
           router.get('/both', { accept: ['text/plain', 'application/json'] }, handlers.respondWithOk());

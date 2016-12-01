@@ -8,17 +8,17 @@
 
 var assert = require('assert'),
     vows = require('vows'),
-    director = require('../../../lib/tarantino');
+    tarantino = require('../../../lib/tarantino');
 
-vows.describe('director/core/path').addBatch({
-  "An instance of director.Router": {
+vows.describe('tarantino/core/path').addBatch({
+  "An instance of tarantino.Router": {
     topic: function () {
       var that = this;
       that.matched = {};
       that.matched['foo'] = [];
       that.matched['newyork'] = [];
 
-      var router = new director.Router({
+      var router = new tarantino.Router({
         '/foo': function () { that.matched['foo'].push('foo'); }
       });
       return router;

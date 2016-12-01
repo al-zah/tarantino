@@ -8,11 +8,11 @@
 
 var assert = require('assert'),
     vows = require('vows'),
-    director = require('../../../lib/tarantino');
+    tarantino = require('../../../lib/tarantino');
 
-vows.describe('director/core/insert').addBatch({
-  "An instance of director.Router": {
-    topic: new director.Router(),
+vows.describe('tarantino/core/insert').addBatch({
+  "An instance of tarantino.Router": {
+    topic: new tarantino.Router(),
     "the on() method": {
       "['foo', 'bar']": function (router) {
         function noop () { }

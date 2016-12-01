@@ -8,18 +8,18 @@
 
 var assert = require('assert'),
     vows = require('vows'),
-    director = require('../../../lib/tarantino');
+    tarantino = require('../../../lib/tarantino');
 
-vows.describe('director/http/methods').addBatch({
-  "When using director": {
-    "an instance of director.http.Router should have all relevant RFC methods": function () {
-      var router = new director.http.Router();
-      director.http.methods.forEach(function (method) {
+vows.describe('tarantino/http/methods').addBatch({
+  "When using tarantino": {
+    "an instance of tarantino.http.Router should have all relevant RFC methods": function () {
+      var router = new tarantino.http.Router();
+      tarantino.http.methods.forEach(function (method) {
         assert.isFunction(router[method.toLowerCase()]);
       });
     },
     "the path() method": {
-      topic: new director.http.Router(),
+      topic: new tarantino.http.Router(),
       "/resource": {
         "should insert nested routes correct": function (router) {
           function getResource() {}

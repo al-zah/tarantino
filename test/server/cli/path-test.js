@@ -8,11 +8,11 @@
 
 var assert = require('assert'),
     vows = require('vows'),
-    director = require('../../../lib/tarantino');
+    tarantino = require('../../../lib/tarantino');
 
-vows.describe('director/cli/path').addBatch({
-  "An instance of director.cli.Router": {
-    topic: new director.cli.Router(),
+vows.describe('tarantino/cli/path').addBatch({
+  "An instance of tarantino.cli.Router": {
+    topic: new tarantino.cli.Router(),
     "the path() method": {
       "should create the correct nested routing table": function (router) {
         function noop () {}

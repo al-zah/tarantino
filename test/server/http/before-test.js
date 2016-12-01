@@ -10,16 +10,16 @@ var assert = require('assert'),
     http = require('http'),
     vows = require('vows'),
     request = require('request'),
-    director = require('../../../lib/tarantino'),
+    tarantino = require('../../../lib/tarantino'),
     helpers = require('../helpers'),
     handlers = helpers.handlers,
     macros = helpers.macros;
 
-vows.describe('director/http/before').addBatch({
-  "An instance of director.http.Router": {
+vows.describe('tarantino/http/before').addBatch({
+  "An instance of tarantino.http.Router": {
     "with ad-hoc routes including .before()": {
       topic: function () {
-        var router = new director.http.Router();
+        var router = new tarantino.http.Router();
 
         router.before('/hello', function () { });
         router.after('/hello', function () { });

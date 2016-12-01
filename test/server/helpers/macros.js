@@ -1,5 +1,5 @@
 /*
- * macros.js: Test macros for director tests.
+ * macros.js: Test macros for tarantino tests.
  *
  * (C) 2011, Charlie Robbins, Paolo Fragomeni, & the Contributors.
  * MIT LICENSE

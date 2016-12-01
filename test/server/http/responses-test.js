@@ -8,13 +8,13 @@
 
 var assert = require('assert'),
     vows = require('vows'),
-    director = require('../../../lib/tarantino');
+    tarantino = require('../../../lib/tarantino');
 
-vows.describe('director/http/responses').addBatch({
-  "When using director.http": {
+vows.describe('tarantino/http/responses').addBatch({
+  "When using tarantino.http": {
     "it should have the relevant responses defined": function () {
       Object.keys(require('../../../lib/tarantino/http/responses')).forEach(function (name) {
-        assert.isFunction(director.http[name]);
+        assert.isFunction(tarantino.http[name]);
       });
     }
   }

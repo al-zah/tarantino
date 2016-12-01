@@ -8,11 +8,11 @@
 
 var assert = require('assert'),
     vows = require('vows'),
-    director = require('../../../lib/tarantino');
+    tarantino = require('../../../lib/tarantino');
 
-vows.describe('director/core/configure').addBatch({
-  "An instance of director.Router": {
-    topic: new director.http.Router(),
+vows.describe('tarantino/core/configure').addBatch({
+  "An instance of tarantino.Router": {
+    topic: new tarantino.http.Router(),
     "the configure() method": {
       "called with an empty object": {
         "should default recurse to 'forward'": function(router) {

@@ -1,5 +1,5 @@
 /*
- * index.js: Test helpers for director.
+ * index.js: Test helpers for tarantino.
  *
  * (C) 2011, Charlie Robbins, Paolo Fragomeni, & the Contributors.
  * MIT LICENSE

@@ -8,11 +8,11 @@
 
 var assert = require('assert'),
   vows = require('vows'),
-  director = require('../../../lib/tarantino');
+  tarantino = require('../../../lib/tarantino');
 
-vows.describe('director/http/index').addBatch({
+vows.describe('tarantino/http/index').addBatch({
   "the traverse() method" : {
-    topic: new director.http.Router(),
+    topic: new tarantino.http.Router(),
     "/some/1/nested/2/route/3" : {
       "should return a stack of three functions and three captures" : function(router) {
         function alpha() {}

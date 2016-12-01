@@ -8,12 +8,12 @@
 
 var assert = require('assert'),
     vows = require('vows'),
-    director = require('../../../lib/tarantino');
+    tarantino = require('../../../lib/tarantino');
 
-vows.describe('director/cli/dispatch').addBatch({
-  "An instance of director.cli.Router": {
+vows.describe('tarantino/cli/dispatch').addBatch({
+  "An instance of tarantino.cli.Router": {
     topic: function () {
-      var router = new director.cli.Router(),
+      var router = new tarantino.cli.Router(),
           that = this;
 
       that.matched = {};
