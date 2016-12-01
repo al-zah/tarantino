@@ -19,6 +19,14 @@ exports.createServer = function (router) {
   });
 };
 
+// Ugly hack to close the server, since I can't for the life of me find how I can
+// run a callback AFTER a test is finished with `vows`.
+exports.closeServerDelayed = function (server) {
+  setTimeout(function() {
+    server.close();
+  }, 1000);
+};
+
 exports.handlers = {
   respondWithId: function (id) {
     this.res.writeHead(200, { 'Content-Type': 'text/plain' })

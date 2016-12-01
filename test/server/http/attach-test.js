@@ -41,8 +41,9 @@ vows.describe('director/http/attach').addBatch({
             this.data = [1,2,3];
           });
 
-          helpers.createServer(router)
+          var server = helpers.createServer(router)
             .listen(9091, this.callback);
+          helpers.closeServerDelayed(server);
         },
         "a request to hello": assertData('hello'),
       }

@@ -46,8 +46,9 @@ vows.describe('director/http').addBatch({
           router.get(/\/foo\/wild\/(.*)/, handlers.respondWithId);
           router.get(/(\/v2)?\/somepath/, handlers.respondWithId);
 
-          helpers.createServer(router)
+          var server = helpers.createServer(router)
             .listen(9090, this.callback);
+          helpers.closeServerDelayed(server);
         },
         "a request to foo/bar/bark": assertBark('foo/bar/bark'),
         "a request to foo/update/bark": assertBark('foo/update/bark'),

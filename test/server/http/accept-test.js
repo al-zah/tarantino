@@ -33,7 +33,8 @@ apiEasy.describe('director/http/accept')
 
           router.get('/weird', handlers.respondWithOk());
 
-          helpers.createServer(router).listen(PORT, this.callback);
+          var server = helpers.createServer(router).listen(PORT, this.callback);
+          helpers.closeServerDelayed(server);
         },
         "should be created": function (err) {
           assert(!err);

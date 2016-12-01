@@ -29,8 +29,9 @@ vows.describe('director/http/stream').addBatch({
       },
       "when passed to an http.Server instance": {
         topic: function (router) {
-          helpers.createServer(router)
+          var server = helpers.createServer(router)
             .listen(9092, this.callback);
+          helpers.closeServerDelayed(server);
         },
         "a POST request to /foo/bar": macros.assertPost(9092, 'foo/bar', {
           foo: 'foo',
