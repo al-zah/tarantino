@@ -5,7 +5,7 @@ when a URL is requested.
 
 Tarantino is a fork of [Director](https://github.com/flatiron/director). It was created because Director doesn't seem to be maintained anymore and the maintainers didn't comment on any questions about the status of the project. All credits belong to Director!!
 
-**This is a work in progress. At the moment it isn't useful yet!**
+**See [GitHub Releases](https://github.com/CodeYellowBV/tarantino/releases) for more information about the changes.**
 
 ```
 npm install tarantino --save
@@ -705,9 +705,9 @@ object can provide the means for better encapsulation and design.
 
 ## History API
 
-**Available on the Client-side only.** Tarantino supports using HTML5 History
-API instead of hash fragments for navigation. To use the API, pass
-`{html5history: true}` to `configure()`. Use of the API is enabled only if the
+**Available on the Client-side only.** By default, the HTML5 History
+API instead of hash fragments for navigation is enabled. To use hash fragments, pass
+`{html5history: false}` to `configure()`. Use of the API is enabled only if the
 client supports `pushState()`.
 
 Using the API gives you cleaner URIs but they come with a cost. Unlike with
