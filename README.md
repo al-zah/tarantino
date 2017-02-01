@@ -190,7 +190,7 @@ Tarantino handles routing for HTTP requests similar to `journey` or `express`:
   //
   // define a routing table.
   //
-  var router = new tarantino.http.Router({
+  var router = new tarantino.Router({
     '/hello': {
       get: helloWorld
     }
@@ -339,7 +339,7 @@ adhoc routing:
 **HTTP Routing**
 
 ``` js
-  var router = new tarantino.http.Router();
+  var router = new tarantino.Router();
 
   router.get(/\/some\/resource/, function () {
     //
@@ -356,7 +356,7 @@ resources. Tarantino exposes a simple way to do this for [Adhoc
 Routing](#adhoc-routing) scenarios:
 
 ``` js
-  var router = new tarantino.http.Router();
+  var router = new tarantino.Router();
 
   //
   // Create routes inside the `/users` scope.
@@ -510,7 +510,7 @@ simple example where a `userId` is used repeatedly.
 ``` js
   //
   // Create a router. This could also be tarantino.cli.Router() or
-  // tarantino.http.Router().
+  // tarantino.Router().
   //
   var router = new tarantino.Router();
 
@@ -668,7 +668,7 @@ callback.
 ### Asynchronous route functions
 
 ``` js
-  var router = new tarantino.http.Router().configure({ async: true });
+  var router = new tarantino.Router().configure({ async: true });
 
   router.on('/:foo/:bar/:bazz', function (foo, bar, bazz, next) {
     //
@@ -733,7 +733,7 @@ route handlers, will contain the request in `this.req` and the response in
 ```js
   var tarantino = require('tarantino');
 
-  var router = new tarantino.http.Router().configure(options);
+  var router = new tarantino.Router().configure(options);
 
   //
   // Attach properties to `this`
@@ -767,7 +767,7 @@ When you are performing HTTP routing there are two common scenarios:
 * Stream the request body by manually calling `.pipe` or listening to the
   `data` and `end` events.
 
-By default `tarantino.http.Router()` will attempt to parse either the `.chunks`
+By default `tarantino.Router()` will attempt to parse either the `.chunks`
 or `.body` properties set on the request parameter passed to
 `router.dispatch(request, response, callback)`. The router instance will also
 wait for the `end` event before firing any routes.
@@ -777,7 +777,7 @@ wait for the `end` event before firing any routes.
 ``` js
   var tarantino = require('tarantino');
 
-  var router = new tarantino.http.Router();
+  var router = new tarantino.Router();
 
   router.get('/', function () {
     //
@@ -800,7 +800,7 @@ you can use a simple request handler in your http server:
   var http = require('http'),
       tarantino = require('tarantino');
 
-  var router = new tarantino.http.Router();
+  var router = new tarantino.Router();
 
   var server = http.createServer(function (req, res) {
     req.chunks = [];
@@ -832,7 +832,7 @@ fired, you can pass the `{ stream: true }` options to the route.
 ``` js
   var tarantino = require('tarantino');
 
-  var router = new tarantino.http.Router();
+  var router = new tarantino.Router();
 
   router.get('/', { stream: true }, function () {
     //
