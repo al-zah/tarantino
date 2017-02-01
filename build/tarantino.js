@@ -938,6 +938,7 @@ var listener = {
     }
 
     if (this.history === true) {
+      s = ((s.indexOf('/') === 0) ? s : '/' + s);
       window.history.pushState({}, document.title, s);
       // Fire an onpopstate event manually since pushing does not obviously
       // trigger the pop event.
@@ -1040,12 +1041,23 @@ Router$$1.prototype.explode = function () {
 Router$$1.prototype.setRoute = function (i, v, val) {
   var url = this.explode();
 
-  if (typeof i === 'number' && typeof v === 'string') {
+  // Remove and insert:
+  if (typeof i === 'number' && typeof v === 'number' && typeof val === 'string') {
+    if (i < url.length) {
+      url.splice(i, v, val);
+    }
+  }
+  // Remove:
+  else if (typeof i === 'number' && typeof v === 'number') {
+    if (i < url.length) {
+      url.splice(i, v);
+    }
+  }
+  // Replace:
+  else if (typeof i === 'number' && typeof v === 'string') {
     url[i] = v;
   }
-  else if (typeof val === 'string') {
-    url.splice(i, v, s);
-  }
+  // Do nothing:
   else {
     url = [i];
   }

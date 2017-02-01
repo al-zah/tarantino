@@ -939,7 +939,16 @@ Remove a segment from the current route.
 * `value` {String} - The new value to assign the the position indicated by the
   first parameter.
 
-Set a segment of the current route.
+Replace a segment of the current route.
+
+### setRoute(start, length, value)
+
+* `start` {Number} - The position at which to start removing items.
+* `length` {Number} - The number of items to remove from the route.
+* `value` {String} - The new value to assign the the position indicated by the
+  first parameter.
+
+Remove and set a segment of the current route.
 
 # Frequently Asked Questions
 

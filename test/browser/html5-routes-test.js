@@ -642,6 +642,96 @@ createTest('setRoute with a single parameter should change location correctly', 
   }, 14)
 });
 
+createTest('setRoute: replace a specific segment of the current route and change location correctly', {
+  '/authors/12/book/23': {
+    on: function() {
+      if (!browser_history_support) {
+        shared.fired.push(location.hash.replace(/^#/, ''));
+      } else {
+        shared.fired.push(location.pathname);
+      }
+    }
+  },
+  '/authors/12/video/23': {
+    on: function() {
+      if (!browser_history_support) {
+        shared.fired.push(location.hash.replace(/^#/, ''));
+      } else {
+        shared.fired.push(location.pathname);
+      }
+    }
+  }
+}, function(assert) {
+  var self = this;
+  this.navigate('/authors/12/book/23', function() {
+    this.router.setRoute(2, 'video');
+    setTimeout(function() {
+      assert.deepEqual(shared.fired, ['/authors/12/book/23', '/authors/12/video/23']);
+      self.finish();
+    }, 14);
+  });
+});
+
+createTest('setRoute: remove segments of the current route and change location correctly', {
+  '/authors/12/book/23': {
+    on: function() {
+      if (!browser_history_support) {
+        shared.fired.push(location.hash.replace(/^#/, ''));
+      } else {
+        shared.fired.push(location.pathname);
+      }
+    }
+  },
+  '/authors/12': {
+    on: function() {
+      if (!browser_history_support) {
+        shared.fired.push(location.hash.replace(/^#/, ''));
+      } else {
+        shared.fired.push(location.pathname);
+      }
+    }
+  }
+}, function(assert) {
+  var self = this;
+  this.navigate('/authors/12/book/23', function() {
+    this.router.setRoute(2, 2);
+    setTimeout(function() {
+      assert.deepEqual(shared.fired, ['/authors/12/book/23', '/authors/12']);
+      self.finish();
+    }, 14);
+  });
+});
+
+createTest('setRoute: insert and replace a segment into the current route and change location correctly', {
+  '/authors/12/book/23': {
+    on: function() {
+      if (!browser_history_support) {
+        shared.fired.push(location.hash.replace(/^#/, ''));
+      } else {
+        shared.fired.push(location.pathname);
+      }
+    }
+  },
+  '/authors/12/awesome': {
+    on: function() {
+      if (!browser_history_support) {
+        shared.fired.push(location.hash.replace(/^#/, ''));
+      } else {
+        shared.fired.push(location.pathname);
+      }
+    }
+  }
+}, function(assert) {
+  var self = this;
+  this.navigate('/authors/12/book/23', function() {
+    this.router.setRoute(2, 2, 'awesome');
+    setTimeout(function() {
+      assert.deepEqual(shared.fired, ['/authors/12/book/23', '/authors/12/awesome']);
+      self.finish();
+    }, 14);
+  });
+});
+
 createTest('route should accept _ and . within parameters', {
   '/:a': {
     on: function root() {
