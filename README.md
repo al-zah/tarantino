@@ -911,6 +911,10 @@ Table for this Router instance at the specified `path`.
 
 Initialize the router, start listening for changes to the URL.
 
+### destroy()
+
+Destroy the last initialized router instance listener.
+
 ### getRoute([index])
 
 * `index` {Number}: The hash value is divided by forward slashes, each section
