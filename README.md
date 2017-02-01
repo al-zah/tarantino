@@ -108,7 +108,7 @@ Tarantino works great with your favorite DOM library, such as jQuery.
     </script>
 
     <script>
-    $('document').ready(function() {
+    $(document).ready(function() {
       //
       // create some functions to be executed when
       // the correct route is issued by the user.
