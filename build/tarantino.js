@@ -790,7 +790,7 @@ Router.prototype.mount = function(routes, path) {
 
   function insertOrMount(route, local) {
     var rename = route,
-        parts = route.split(self.delimiter),
+        parts = route.split(/\/(?!\!)/g),
         routeType = typeof routes[route],
         isRoute = parts[0] === "" || !self._methods[parts[0]],
         event = isRoute ? "on" : rename;

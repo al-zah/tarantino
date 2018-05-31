@@ -1,8 +1,8 @@
 {
-  "name": "tarantino",
+  "name": "hhs-tarantino",
   "description": "A client Side/Server Side Router - A Fork of Director",
   "author": "Charlie Robbins <charlie.robbins@gmail.com>",
-  "version": "2.1.0",
+  "version": "2.1.2",
   "license": "MIT",
   "maintainers": [
     "Kees Kluskens <kees@codeyellow.nl>"
