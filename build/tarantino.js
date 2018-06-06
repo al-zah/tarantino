@@ -95,7 +95,7 @@ function paramifyString(str, params, mod) {
   }
 
   return mod === str
-    ? '([._a-zA-Z0-9-%()@]+)'
+    ? '([._a-zA-Z0-9-%()@+]+)'
     : mod;
 }
 
